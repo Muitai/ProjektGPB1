@@ -3,7 +3,7 @@ School project
 
 Hastur's Ritual ---  a role playing game
   
-  Projectentwickler:
+  Developers:
     
      - Stephan Lukow
      - David Skibitzki
