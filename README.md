@@ -10,6 +10,8 @@ Hastur's Ritual ---  a role playing game
      - David Skibitzki
      - Daniel Augustinovic
      - Martin Wirth
+     - Amadeus Schnapka
+     
      
   Description:
       
