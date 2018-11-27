@@ -1,5 +1,6 @@
 # ProjektGPB1
-School project
+School project, November 2018
+
 
 Hastur's Ritual ---  a role playing game
   
