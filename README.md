@@ -6,7 +6,7 @@ Hastur's Ritual ---  a role playing game
   
   Developers:
     
-     - Stephan Lukow
+     - Stephan Luckow
      - David Skibitzki
      - Daniel Augustinovic
      - Martin Wirth
