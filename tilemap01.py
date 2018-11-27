@@ -1,6 +1,8 @@
 from pygame.locals import *
 import pygame, sys
 
+img = pygame.image.load("C:/Users/m.wirth/Desktop/tilepic1.png")
+
 green = (40,255,30)
 brown = (40,60,90)
 red =  (155,20,30)
@@ -25,7 +27,7 @@ tilemap = [
 
         ]
 
-TILESIZE = 25
+TILESIZE = 50
 MAPWIDTH =  5
 MAPHEIGHT = 5
 
@@ -38,7 +40,7 @@ while True:
     mouse_x = pygame.mouse.get_pos()[0]
     mouse_y = pygame.mouse.get_pos()[1]
 
-    print (mouse_x, mouse_y)
+    #print (mouse_x, mouse_y)
 
     for event in pygame.event.get():
         if event.type == QUIT:
@@ -51,10 +53,14 @@ while True:
                 color = colours[tilemap[row][column]];
                 if mouse_x >= (column * TILESIZE) and mouse_x <= (column* TILESIZE) + TILESIZE:
                     if mouse_y >= (row * TILESIZE) and mouse_y <= (row* TILESIZE) + TILESIZE:
-                        print (str(row) + " " + str(column))
-                        color = yellow;                                                                                                            
+                        if tilemap[row][column] !=  1:
+                            
+                            print (tilemap[row][column], "KOLLISION")
+                            #print (str(row) + " Error " + str(column))
+                        else:
+                            print ("bla")
 
                 pygame.draw.rect(DISPLAYSURF, color, (column*TILESIZE, row*TILESIZE, TILESIZE, TILESIZE))
-
+ 
 
     pygame.display.update()
