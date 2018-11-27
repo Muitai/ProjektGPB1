@@ -6,7 +6,7 @@ Hastur's Ritual ---  a role playing game
   
   Developers:
     
-     - Stephan Lukow
+     - Stephan Luckow
      - David Skibitzki
      - Daniel Augustinovic
      - Martin Wirth
@@ -16,4 +16,4 @@ Hastur's Ritual ---  a role playing game
   Description:
       
       Hastur's Ritual is an small RPG Adventure who based on a top-down-tile-graphics which used a own battle system and spawn system.
-      they are lot of quests that the Adventure must finished, to be come to the end.
+      There are a lot of quests that the adventurer must finish to be come to the end.
