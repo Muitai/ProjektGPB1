@@ -1,7 +1,7 @@
 # ProjektGPB1
 School project
 
-Hastur's Ritual ---  ein Rollenspiel
+Hastur's Ritual ---  a role playing game
   
   Projectentwickler:
     
@@ -10,6 +10,7 @@ Hastur's Ritual ---  ein Rollenspiel
      - Daniel Augustinovic
      - Martin Wirth
      
-  Kurzbeschreibung:
+  Description:
       
-      Bei dem Projekt handelt es sich um ein kleines, Tile-basiertes (à la Ultima) Rollenspiel mit Adventure-komponente.
+      This project in development (as of Nov. 2018) is a small RPG based an top-down-tile-graphics (à la Ultima) which has some adventure       elemtents to it. 
+     
