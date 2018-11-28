@@ -31,6 +31,9 @@ img = [pygame.image.load("tilepic1.png"),
        pygame.image.load("tilepic3.png"),
        pygame.image.load("tilepic4.png")]
 
+    ### Welche Tiles lösen eine Kollision aus? ###
+
+kollisionlist = (grass,stone)
 
     ### Größe der Tiles und die Größe der Map in Tiles ###
 
@@ -54,8 +57,8 @@ red = (255,0,0)
 
     ### Größe des Spielers in Pixeln ###
 
-player_width = 10
-player_height = 10
+player_width = 29
+player_height = 35
 
 
     ### Eigenschaften des PyGame-Fensters ###
@@ -152,23 +155,23 @@ def game_loop():
     
         
         dodraw(x,y)    ### Hier wird das gesamte Spielfeld neu gezeichnet
-    
+
         
         for row in range(MAPWIDTH):    ### Kollisionsabfrage
            
             for column in range(MAPHEIGHT):
                 if (x >= (column * TILESIZE) and x <= (column* TILESIZE) + TILESIZE) or ((x+29) >= (column * TILESIZE) and (x+29) <= (column* TILESIZE) + TILESIZE):
                     if (y >= (row * TILESIZE) and y <= (row* TILESIZE) + TILESIZE) or ((y+35) >= (row * TILESIZE) and (y+35) <= (row* TILESIZE) + TILESIZE):
-                        if (tilemap[row][column] ==  grass) or (tilemap[row][column] ==  stone):
+                        if (tilemap[row][column] in kollisionlist):
                             
                             x = xold
                             y = yold
       
-        if (x >= display_width - player_width or x <= 0) or ((x+20) >= display_width - player_width or (x+20) <= 0):
+        if (x >= display_width - player_width or x <= 0):
                             x = xold
                             y = yold
             
-        if (y >= display_height - player_width or y <= 0) or ((y+26) >= display_height - player_width or (y+26) <= 0):
+        if (y >= display_height - player_height or y <= 0):
                             x = xold
                             y = yold
 
