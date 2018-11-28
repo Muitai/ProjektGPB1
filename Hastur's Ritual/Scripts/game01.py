@@ -22,13 +22,12 @@ water = 3
 
     ### Die Tile-Map als Liste ###
 
-tilemap = [
-          [floor, floor, water, water, grass],
-          [floor, wall, grass, water, floor],
-          [wall, grass, floor, grass, wall],
-          [wall, grass, grass, wall, grass],
-          [floor, floor, floor, water, grass]
-          ]
+tilemap = ["0000000000",
+           "0000000000",
+           "0000300000",
+           "0000000000",
+           "2222002222"]
+
 
     ### Welche Tiles lösen eine Kollision aus? ###
 
@@ -37,7 +36,7 @@ kollisionlist = (wall, water)
     ### Größe der Tiles und die Größe der Map in Tiles  in Pixeln ###
 
 TILESIZE = 50
-MAPWIDTH =  5
+MAPWIDTH =  10
 MAPHEIGHT = 5
 
 
@@ -82,9 +81,9 @@ playerImg = pygame.image.load("Assests/Ready Player One test.png")
 
 def dodraw(playerx, playery):
     gameDisplay.fill(white)
-    for y in range(5):
-        for x in range(5):
-            gameDisplay.blit(img[tilemap[y][x]], (TILESIZE*x,TILESIZE*y))
+    for y in range(MAPHEIGHT):
+        for x in range(MAPWIDTH):
+            gameDisplay.blit(img[int(tilemap[y][x])], (TILESIZE*x,TILESIZE*y))
         
     gameDisplay.blit(playerImg, (playerx,playery))
     pygame.display.update()
@@ -156,12 +155,12 @@ def game_loop():
         dodraw(x,y)    ### Hier wird das gesamte Spielfeld neu gezeichnet
 
         
-        for row in range(MAPWIDTH):    ### Kollisionsabfrage
+        for row in range(MAPHEIGHT):    ### Kollisionsabfrage
            
-            for column in range(MAPHEIGHT):
+            for column in range(MAPWIDTH):
                 if (x >= (column * TILESIZE) and x <= (column* TILESIZE) + TILESIZE) or ((x+29) >= (column * TILESIZE) and (x+29) <= (column* TILESIZE) + TILESIZE):
                     if (y >= (row * TILESIZE) and y <= (row* TILESIZE) + TILESIZE) or ((y+35) >= (row * TILESIZE) and (y+35) <= (row* TILESIZE) + TILESIZE):
-                        if (tilemap[row][column] in kollisionlist):
+                        if (int(tilemap[row][column]) in kollisionlist):
                             
                             x = xold
                             y = yold
