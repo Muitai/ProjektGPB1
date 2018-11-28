@@ -26,10 +26,10 @@ tilemap = [
 
     ### Hier eine Liste, für die dodraw-Funktion ###
 
-img = [pygame.image.load("C:/Users/m.wirth/Desktop/tilepic1.png"),
-       pygame.image.load("C:/Users/m.wirth/Desktop/tilepic2.png"),
-       pygame.image.load("C:/Users/m.wirth/Desktop/tilepic3.png"),
-       pygame.image.load("C:/Users/m.wirth/Desktop/tilepic4.png")]
+img = [pygame.image.load("tilepic1.png"),
+       pygame.image.load("tilepic2.png"),
+       pygame.image.load("tilepic3.png"),
+       pygame.image.load("tilepic4.png")]
 
 
     ### Größe der Tiles und die Größe der Map in Tiles ###
@@ -54,8 +54,8 @@ red = (255,0,0)
 
     ### Größe des Spielers in Pixeln ###
 
-player_width = 29
-player_height = 35
+player_width = 10
+player_height = 10
 
 
     ### Eigenschaften des PyGame-Fensters ###
@@ -71,7 +71,7 @@ clock = pygame.time.Clock()
 
     ### Spieler-Grafik laden ###
 
-playerImg = pygame.image.load("C:/Users/m.wirth/Desktop/Ready Player One test.png")
+playerImg = pygame.image.load("Ready Player One test.png")
 
 
 
@@ -115,11 +115,12 @@ def message_display(text):
     ### Die Game-Schleife ###
 
 def game_loop():
-    x = (display_width * 0.45)
+    x = (display_width * 0.45)    ### Startposition des Spielers
     y = (display_height * 0.8)
 
-    x_change = 0
+    x_change = 0    ### Change Variablen für Bewegung bei Tastendruck
     y_change = 0
+    
     gameExit = False
 
     while not gameExit:
