@@ -12,14 +12,24 @@ class Item():
         return"{}\n=====\n{}\nValue: {}\n".format(self.name, self.descrition, self.value)
 
 
-class Weapon(item):
+class Weapon(Item):
     def __init__(self, name, description, value, damage):
         self.damage = damage
-        super().__init__(name, desription, value)
+        super().__init__(name, description, value)
         
     def __str__(self):
         return"{}\n=====\n{}\nValue: {}\nDamage: {}\n".format(self.name, self.description, self.value, self.damage)
     
+
+class Armor(Item):
+    def __init__(self, name, description, value, protection):
+        self.protection = protection
+        super().__init__(name, description, value)
+        
+    def __str__(self):
+        return"{}\n=====\n{}\nValue: {}\nProtection: {}\n".format(self.name, self.description, self.value, self.protection)
+
+
 
 # Wepons
 
@@ -73,6 +83,47 @@ class Hp_Potion(Item, amt):
                                  value = self.amt,
                                  heal = 50)
                                   
-                                  
+
+class Greater_HP_Potion(Item, amt):
+    def __init__(self):
+        self.amt = amt
+        super().__init__(name="Greater HP Potion",
+                         description = " A greater heal potion. Heals 75 points.".format(str(self.amt)),
+                         value = self.amt,
+                         heal = 75)
                                
-                         
+ 
+ # Armor
+ 
+ 
+ class Lether_Armor(Armor):
+     def __init__(self):
+         super().__init__(name="Lether Armor",
+                          description = " A lether armor, better as nothing."
+                          value = 100,
+                          protection = 25)
+         
+
+class Iron_Armor(Armor):
+    def __init__(self):
+        super().__init__(name="Iron Armor",
+                         description = " A rusty iron armor."
+                         value = 100,
+                         protection = 50)
+        
+        
+class Gold_Armor(Armor):
+    def __init__(self):
+        super().__init__(name="Gold Armor",
+                         description = " A gold armor with fine ornaments."
+                         value = 100,
+                         protection = 75)
+        
+        
+class Diamant_Armor(Armor):
+    def __init__(self):
+        super().__init__(name="Diamant Armor",
+                         description = " A magical diamant armor with a mystic aura."
+                         value = 150,
+                         protection = 100)
+        
