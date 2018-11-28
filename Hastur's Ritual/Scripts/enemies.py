@@ -1,10 +1,41 @@
-# a enemie list
+# A Base class of all enemies 
 
-class enemies():
-    def __init__(self, name, value, description):
+class Enemy():
+    def __init__(self, name, hp, damage):
         self.name = name
-        self.value = value
-        self.description = description
+        self.hp = hp
+        self.damage = damage
     
-    def __str__(self):
-        return"{}\n=====\n{}\nValue: {}\n".format(self.name, self.value, self.description)
+    def is_alive(self):
+        return self.hp > 0
+    
+# Anmial
+
+class Giant_Spider(Enemy):
+    def __init__(self):
+        super().__init__(name="Giant Spider", hp = 10, damage = 2)
+        
+class Grey_Wolf(Enemy):
+    def __init__(self):
+        super().__init__(name="Grey Wolf", hp = 20, damage = 5)
+        
+# Humanoid
+
+class Skeleton(Enemy):
+    def __init__(self):
+        super().__init__(name="Skeleton", hp = 20, damage = 5)
+        
+class Dark_Knight(Enemy):
+    def __init__(self):
+        super().__init__(name="Dark Knight", hp = 30, damage = 10)
+        
+        
+class Blood_Gardian(Enemy):
+    def __init__(self):
+        super().__init__(name="Blood Gardian", hp = 40, damage = 15)
+        
+# Boss
+
+class Boss(Enemy):
+    def __init__(self):
+        super().__init__(name="Boss", hp = 80, damage = 25)
