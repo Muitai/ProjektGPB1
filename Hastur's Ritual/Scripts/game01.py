@@ -6,36 +6,35 @@ from pytmx import load_pygame
 pygame.init()
 
 
-    ### Zuordnung der Tile-Bezeichnungen ###
+    ### Hier eine Liste, für die dodraw-Funktion ###
 
-grass = 0
-dirt = 1
-stone = 2
+img = [pygame.image.load("Assests/Boden.jpg"),
+       pygame.image.load("Assests/Grass.png"),
+       pygame.image.load("Assests/Mauer.jpg"),
+       pygame.image.load("Assests/Wasser.jpg")]
+
+    ### Zuordnung der Tile-Bezeichnungen ###
+floor = 0
+grass = 1
+wall = 2
 water = 3
 
 
     ### Die Tile-Map als Liste ###
 
 tilemap = [
-        [grass, dirt, water, dirt, stone],
-        [dirt, stone, dirt, water, dirt],
-        [stone, grass, dirt, dirt, stone],
-        [stone, grass, dirt, dirt, grass],
-        [dirt, dirt, dirt, water, grass]
-        ]
-
-    ### Hier eine Liste, für die dodraw-Funktion ###
-
-img = [pygame.image.load("tilepic1.png"),
-       pygame.image.load("tilepic2.png"),
-       pygame.image.load("tilepic3.png"),
-       pygame.image.load("tilepic4.png")]
+          [floor, floor, water, water, grass],
+          [floor, wall, grass, water, floor],
+          [wall, grass, floor, grass, wall],
+          [wall, grass, grass, wall, grass],
+          [floor, floor, floor, water, grass]
+          ]
 
     ### Welche Tiles lösen eine Kollision aus? ###
 
-kollisionlist = (grass,stone)
+kollisionlist = (wall, water)
 
-    ### Größe der Tiles und die Größe der Map in Tiles ###
+    ### Größe der Tiles und die Größe der Map in Tiles  in Pixeln ###
 
 TILESIZE = 50
 MAPWIDTH =  5
@@ -74,7 +73,7 @@ clock = pygame.time.Clock()
 
     ### Spieler-Grafik laden ###
 
-playerImg = pygame.image.load("Ready Player One test.png")
+playerImg = pygame.image.load("Assests/Ready Player One test.png")
 
 
 
@@ -85,7 +84,7 @@ def dodraw(playerx, playery):
     gameDisplay.fill(white)
     for y in range(5):
         for x in range(5):
-            gameDisplay.blit(img[tilemap[y][x]], (50*x,50*y))
+            gameDisplay.blit(img[tilemap[y][x]], (TILESIZE*x,TILESIZE*y))
         
     gameDisplay.blit(playerImg, (playerx,playery))
     pygame.display.update()
