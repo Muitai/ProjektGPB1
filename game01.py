@@ -164,11 +164,11 @@ def game_loop():
                             x = xold
                             y = yold
       
-        if (x >= display_width - player_width or x <= 0) or ((x+20) >= display_width - player_width or (x+20) <= 0):
+        if (x >= display_width - player_width or x <= 0):
                             x = xold
                             y = yold
             
-        if (y >= display_height - player_width or y <= 0) or ((y+26) >= display_height - player_width or (y+26) <= 0):
+        if (y >= display_height - player_height or y <= 0):
                             x = xold
                             y = yold
 
