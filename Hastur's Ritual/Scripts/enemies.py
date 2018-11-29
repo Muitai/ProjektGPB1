@@ -30,9 +30,9 @@ class Dark_Knight(Enemy):
         super().__init__(name="Dark Knight", hp = 30, damage = 10)
         
         
-class Blood_Gardian(Enemy):
+class Blood_Guardian(Enemy):
     def __init__(self):
-        super().__init__(name="Blood Gardian", hp = 40, damage = 15)
+        super().__init__(name="Blood Guardian", hp = 40, damage = 15)
         
 # Boss
 
