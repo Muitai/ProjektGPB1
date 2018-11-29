@@ -28,7 +28,7 @@ def examine(noun):
   else:
     return "There is no {} here.".format(noun)
 
-####funktion - hit ("Schlagen")####
+#### funktion - hit ("Schlagen") ####
 def hit(noun):
   if noun in GameObject.objects:
     thing = GameObject.objects[noun]
@@ -42,7 +42,7 @@ def hit(noun):
     msg ="There is no {} here.".format(noun)
   return msg
 
-####class definition - overall####
+#### class definition - overall ####
 class GameObject:
   class_name = ""
   desc = ""
