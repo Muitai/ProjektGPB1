@@ -66,14 +66,14 @@ class Goblin(GameObject):
 #### variable goblin für while true: get_input()--zeile 77 ####     
 goblin = Goblin("Slimey")
 
-####liste für Verben--geplant: wörter durch stellvertreter buchstaben ersetzen####
+#### liste für Verben--geplant: wörter durch stellvertreter buchstaben ersetzen ####
 verb_dict = {
   "say": say,
   "examine": examine,
   "hit": hit,
 }
 
-####while schleife für die Eingabe####
+#### while schleife für die Eingabe ####
 while True:
   get_input()
 
