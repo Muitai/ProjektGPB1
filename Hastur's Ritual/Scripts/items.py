@@ -31,7 +31,7 @@ class Armor(Item):
 
 
 
-# Wepons
+# Weapons
 
 class TraineeSword(Weapon):
     def __init__(self):
