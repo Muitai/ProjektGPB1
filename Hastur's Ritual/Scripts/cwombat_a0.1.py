@@ -55,7 +55,7 @@ class GameObject:
   def get_desc(self):
     return self.class_name + "\n" + self.desc
 
-####class definition - Goblin (als Game Object)####
+#### class definition - Goblin (als Game Object) ####
 class Goblin(GameObject):
   def __init__(self, name):
     self.class_name = "Goblin"
