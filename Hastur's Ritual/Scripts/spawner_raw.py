@@ -43,7 +43,7 @@ class Player(pygame.sprite.Sprite):
             self.rect.right = WIDTH
         if self.rect.left < 0:
             self.rect.left = 0
-#############################################################            
+##### Definition der Mob class #####            
 class Mob(pygame.sprite.Sprite):
     def __init__(self):
         pygame.sprite.Sprite.__init__(self)
@@ -54,7 +54,8 @@ class Mob(pygame.sprite.Sprite):
         self.rect.y = random.randrange(-100, -40)
         self.speedy = random.randrange(1, 8)
         self.speedx = random.randrange(-3, 3)
-        
+
+##### Geschwindigkeitssteuerung der Mobs #####        
     def update(self):
         self.rect.x += self.speedx
         self.rect.y += self.speedy
@@ -62,7 +63,8 @@ class Mob(pygame.sprite.Sprite):
             self.rect.x = random.randrange(WIDTH - self.rect.width)
             self.rect.y = random.randrange(-100, -40)
             self.speedy = random.randrange(1, 8)
-            
+
+#### Sprite-Section ####            
 all_sprites = pygame.sprite.Group()
 mobs = pygame.sprite.Group()
 player = Player()
@@ -72,7 +74,7 @@ for i in range(8):
     all_sprites.add(m)
     mobs.add(m)
         
-    # Game loop
+    # Spawn/Game loop
 running = True
 while running:
         # keep loop running at the right speed
