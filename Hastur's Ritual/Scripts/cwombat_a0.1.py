@@ -17,7 +17,7 @@ def get_input():
   else:
     print(verb("nothing"))
     
-####funktion - say("sagen")####
+#### funktion - say("sagen") ####
 def say(noun):
   return 'You said "{}"'.format(noun)
 
