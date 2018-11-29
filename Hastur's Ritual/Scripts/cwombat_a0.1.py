@@ -1,4 +1,4 @@
-#####importfunktion für Würfelvariabel#####
+##### importfunktion für Würfelvariabel #####
 #import random
 
 ######## Eingebeaufforderung|Unbekannte Wörter werden mit "Unknown verb" erkannt ############
