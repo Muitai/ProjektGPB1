@@ -21,7 +21,7 @@ def get_input():
 def say(noun):
   return 'You said "{}"'.format(noun)
 
-####funktion - untersuchen ("untersuchen")####
+#### funktion - untersuchen ("untersuchen") ####
 def examine(noun):
   if noun in GameObject.objects:
     return GameObject.objects[noun].get_desc()
