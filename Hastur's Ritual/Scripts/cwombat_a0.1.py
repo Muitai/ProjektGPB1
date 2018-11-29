@@ -1,3 +1,5 @@
+## momentaner stand: funktion fragt nach input, goblin ist eingebaut, goblin ist tödbar, sage funktion(nur Temporär) ##
+## examine funktion (sagt ob was da ist oder nicht (auch nur temporär), hit funktion (zuschlagen, wird noch modifiziert)
 #####importfunktion für Würfelvariabel#####
 #import random
 
