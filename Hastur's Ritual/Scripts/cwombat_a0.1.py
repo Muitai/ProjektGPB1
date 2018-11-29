@@ -42,7 +42,7 @@ class Goblin(GameObject):
     super().__init__(name)
 
 
-#### variable goblin für while true: get_input()--zeile 73 ####     
+#### variable goblin für while true: get_input()--zeile 80 ####     
 goblin = Goblin("Slimey")
     
 #### funktion - say("sagen") ####
