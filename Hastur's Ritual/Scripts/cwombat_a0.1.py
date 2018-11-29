@@ -2,7 +2,7 @@
 #import random
 
 ##### 
-print("What do you want do ?")
+print("What do you want to do ?")
 
 ######## Eingebeaufforderung|Unbekannte Wörter werden mit "Unknown verb" erkannt ############
 def get_input():
