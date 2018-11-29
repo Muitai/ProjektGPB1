@@ -63,7 +63,7 @@ class Goblin(GameObject):
     self._desc = " A foul creature, it's oudor is horrifying!!"
     super().__init__(name)
 
-####variable goblin für while true: get_input()--zeile 77####     
+#### variable goblin für while true: get_input()--zeile 77 ####     
 goblin = Goblin("Slimey")
 
 ####liste für Verben--geplant: wörter durch stellvertreter buchstaben ersetzen####
