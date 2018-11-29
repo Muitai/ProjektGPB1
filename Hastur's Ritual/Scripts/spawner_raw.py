@@ -13,14 +13,14 @@ GREEN  = (  0, 255,   0)
 BLUE   = (  0,   0, 255)
 YELLOW = (255, 255,   0)
 
-# initialize pygame und create window__entfernen um in eigenen game einzubetten.
+#### initialize pygame und create window__entfernen um in eigenen game einzubetten. ####
 pygame.init()
 pygame.mixer.init()
 screen = pygame.display.set_mode((WIDTH, HEIGHT))
 pygame.display.set_caption("Shmup!")
 clock = pygame.time.Clock()
 
-####class - spieler definiert(kann durch bestehende referenzen ersetzt werden####
+#### class - spieler definiert(kann durch bestehende referenzen ersetzt werden -- ####
 class Player(pygame.sprite.Sprite):
     def __init__(self):
         pygame.sprite.Sprite.__init__(self)
@@ -30,7 +30,7 @@ class Player(pygame.sprite.Sprite):
         self.rect.centerx = WIDTH / 2
         self.rect.bottom = HEIGHT - 10
         self.speedx = 0
-#############################################################        
+##### Geschwindigkeit von Player -- kann durch bestehendes ersetzt werden -- #####        
     def update(self):
         self.speedx = 0
         keystate = pygame.key.get_pressed()
