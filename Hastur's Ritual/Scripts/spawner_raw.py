@@ -13,7 +13,7 @@ GREEN  = (  0, 255,   0)
 BLUE   = (  0,   0, 255)
 YELLOW = (255, 255,   0)
 
-# initialize pygame and create window__entfernen um in eigenen game einzubetten
+# initialize pygame und create window__entfernen um in eigenen game einzubetten.
 pygame.init()
 pygame.mixer.init()
 screen = pygame.display.set_mode((WIDTH, HEIGHT))
