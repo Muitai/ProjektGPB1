@@ -131,8 +131,8 @@ def game_loop():
         y_change = 0
         
         event = pygame.event.get()    # key query
-        #if event.type == pygame.QUIT:
-        #    gameExit = True
+        if event == pygame.QUIT:
+            gameExit = True
             
         pressed = pygame.key.get_pressed()
 
@@ -148,6 +148,7 @@ def game_loop():
         if pressed[pygame.K_DOWN]:
                     playerdir = 1
                     y_change = 2
+        
         x += x_change     # adjust player position
         y += y_change
     
@@ -165,7 +166,7 @@ def game_loop():
                             
                             x = xold
                             y = yold
-      
+                            
         if (x >= display_width - player_width or x <= 0):
                             x = xold
                             y = yold
