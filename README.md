@@ -18,6 +18,7 @@ Description:
   and monster movements on a non-scrolling map made of simple tile graphics. The combat system is hack&slay style action. This project is 
   being realised with the pyGame-library.
   
+
 Release Note 30.11.2018:
 
   As of now we have implemented a simple monster spawn system and smooth player movements which simple dummy graphics for everything.
