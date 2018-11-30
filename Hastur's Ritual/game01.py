@@ -1,22 +1,57 @@
 import pygame
 import time
-from settings import *
-from tile_map import *
+import random
 from pytmx import load_pygame
 
-
-pygame.init()
-
-
-
-    ### Properties of the pyGame-window ###
-gameDisplay = pygame.display.set_mode((display_width, display_height))
-pygame.display.set_caption("Hastur's Ritual")
+from settings import *    # general settings, all player specs
+from tile_map import *    # everything concerning the world map
 
 
+pygame.init()   ### setup pyGame ### 
+pygame.mixer.init()
     ### Initialization of the system clock ###
 clock = pygame.time.Clock()
 
+
+
+    ### monster class initializes and updates all monster attributes ###
+class Mob(pygame.sprite.Sprite):
+    def __init__(self):      # monster-postion is set up randomly on screen ###
+        pygame.sprite.Sprite.__init__(self)
+        self.image = pygame.Surface((50, 50))
+        self.image.fill((255,255,255))
+        self.rect = self.image.get_rect()
+        randy = random.randrange(0, MAPWIDTH)
+        randx = random.randrange(0, MAPHEIGHT)
+        
+        while int(tilemap[randx][randy]) in kollisionlist:   # check if monster in wall #
+            randy = random.randrange(0, MAPWIDTH)
+            randx = random.randrange(0, MAPHEIGHT)
+        self.rect.y = 50 * randx
+        self.rect.x = 50 * randy
+               
+        self.speedy = random.randrange(-2, 2)
+        self.speedx = random.randrange(-2, 2)
+        
+    def update(self):      # for updating monster-position #
+        self.rect.x += self.speedx
+        self.rect.y += self.speedy
+
+
+
+    ### Properties of the pyGame-window, sprite list and 'mobs' for monster spawning ###
+gameDisplay = pygame.display.set_mode((display_width, display_height))
+pygame.display.set_caption("Hastur's Ritual")
+all_sprites = pygame.sprite.Group()
+mobs = pygame.sprite.Group()
+
+
+
+    ### function for monster spawning ###
+def mobspawn():
+    m = Mob()
+    all_sprites.add(m)
+    mobs.add(m)
 
    
     ### Draw the game screen, activation of tiles in form und funktion ###
@@ -28,8 +63,9 @@ def dodraw(playerx, playery, playerdir):
             gameDisplay.blit(img[int(tilemap[y][x])], (TILESIZE*x,TILESIZE*y))
         
     gameDisplay.blit(imgPlayer[playerdir], (playerx,playery))
+    all_sprites.draw(gameDisplay)
     pygame.display.update()     # update display
-    clock.tick(6000)      # maximum FPS-limit: 60FPS
+    clock.tick(60)      # maximum FPS-limit: 60FPS
     
 
     
@@ -60,13 +96,16 @@ def message_display(text):
     ### the major game loop ###
 
 def game_loop():
-    x = (display_width * 0.45)    # initial position of player
+    x = (display_width * 0.45)    # initial position and direction of player
     y = (display_height * 0.88)
     playerdir = 0
 
     x_change = 0    # change variables for key triggered movements
     y_change = 0
     
+    mobspawn()    ### spawn monster, add to monster-list ###
+    mobspawn()    ### another one ###
+
     gameExit = False
 
     while not gameExit:
@@ -76,10 +115,10 @@ def game_loop():
         y_change = 0
         
         event = pygame.event.get()    # key query
-        #if event.type == pygame.QUIT:
-        #    gameExit = True
+        if event == pygame.QUIT:
+            gameExit = True
             
-        pressed = pygame.key.get_pressed()
+        pressed = pygame.key.get_pressed()   # the get_pressed method for continuous movement
 
         if pressed[pygame.K_LEFT]:
                     playerdir = 2
@@ -93,11 +132,12 @@ def game_loop():
         if pressed[pygame.K_DOWN]:
                     playerdir = 1
                     y_change = 2
+        
         x += x_change     # adjust player position
         y += y_change
     
         
-        dodraw(x,y, playerdir)
+        dodraw(x,y, playerdir)     ### draw everything with adjustments ###
         
         
             ### Collision detection ###
@@ -108,10 +148,10 @@ def game_loop():
                     if (y >= (row * TILESIZE) and y <= (row* TILESIZE) + TILESIZE) or ((y+35) >= (row * TILESIZE) and (y+35) <= (row* TILESIZE) + TILESIZE):
                         if (int(tilemap[row][column]) in kollisionlist):
                             
-                            x = xold
+                            x = xold    # buffered postions is set when collision occurs
                             y = yold
-      
-        if (x >= display_width - player_width or x <= 0):
+                            
+        if (x >= display_width - player_width or x <= 0):  # check for screen-border collision
                             x = xold
                             y = yold
             
