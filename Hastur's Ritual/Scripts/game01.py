@@ -1,162 +1,163 @@
 import pygame
 import time
+from settings import *
 from pytmx import load_pygame
 
 
 pygame.init()
 
 
-    ### Hier eine Liste, für die dodraw-Funktion ###
-
+    ### A list which contains the tile images for the dodraw-function ###
 img = [pygame.image.load("Assests/Boden.jpg"),
        pygame.image.load("Assests/Grass.png"),
        pygame.image.load("Assests/Mauer.jpg"),
        pygame.image.load("Assests/Wasser.jpg")]
 
-    ### Zuordnung der Tile-Bezeichnungen ###
+
+    ### Names of the tile types just for the ease of reading ###
 floor = 0
 grass = 1
 wall = 2
 water = 3
 
 
-    ### Die Tile-Map als Liste ###
+    ### The tile map as a list of strings, meanings of numbers see above ###
 
-tilemap = ["0000000000",
-           "0000000000",
-           "0000300000",
-           "0000000000",
-           "2222002222"]
+tilemap = ["2222222222222222222222222",
+           "2222222220000022222222222",
+           "2220000000000000000000222",
+           "2220222220000022222202222",
+           "2220222222222222222202222",
+           "2000022222222222222202222",
+           "2000022211111111222202222",
+           "2000022211111111222202222",
+           "2000000111111111100002222",
+           "2000022211111111222202222",
+           "2000022211111111222202222",
+           "2220222222222222220000322",
+           "2220222222200000000000332",
+           "2220222222202222220000332",
+           "2000000222202222222222222",
+           "2000000220000033333332222",
+           "2000000220000031111112222",
+           "2222222222222221111122222"]
 
 
-    ### Welche Tiles lösen eine Kollision aus? ###
-
+    ### Which tiles trigger collision ? ###
 kollisionlist = (wall, water)
 
-    ### Größe der Tiles und die Größe der Map in Tiles  in Pixeln ###
 
+    ### Size of the tiles and the size of the map in tiles ###
 TILESIZE = 50
-MAPWIDTH =  10
-MAPHEIGHT = 5
+MAPWIDTH =  len(tilemap[1])
+MAPHEIGHT = len(tilemap)
 
 
-    ### Fenster-Größe ###
-
+    ### Window size in pixels ###
 display_width = TILESIZE * MAPWIDTH
 display_height = TILESIZE * MAPHEIGHT
 
 
-    ### Ein paar Farbbezeichnungen für spätere Verwendung ###
-
+    ### Color assignments for the creaton of text objects ###
 black = (0,0,0)
 white = (255,255,255)
 red = (255,0,0)
 
 
-    ### Größe des Spielers in Pixeln ###
-
-player_width = 29
-player_height = 35
-
-
-    ### Eigenschaften des PyGame-Fensters ###
-
+    ### Properties of the pyGame-window ###
 gameDisplay = pygame.display.set_mode((display_width, display_height))
 pygame.display.set_caption("Hastur's Ritual")
 
 
-    ### Initialisierung der Uhr ###
-
+    ### Initialization of the system clock ###
 clock = pygame.time.Clock()
 
 
-    ### Spieler-Grafik laden ###
+   
+    ### Draw the game screen, activation of tiles in form und funktion ###
 
-playerImg = pygame.image.load("Assests/Ready Player One test.png")
-
-
-
-    
-    ### Spiel zeichnen, alles ###
-
-def dodraw(playerx, playery):
+def dodraw(playerx, playery, playerdir):
     gameDisplay.fill(white)
     for y in range(MAPHEIGHT):
         for x in range(MAPWIDTH):
             gameDisplay.blit(img[int(tilemap[y][x])], (TILESIZE*x,TILESIZE*y))
         
-    gameDisplay.blit(playerImg, (playerx,playery))
-    pygame.display.update()
-    clock.tick(60)
+    gameDisplay.blit(imgPlayer[playerdir], (playerx,playery))
+    pygame.display.update()     # update display
+    clock.tick(6000)      # maximum FPS-limit: 60FPS
     
 
-    ### Text-Ausgabe ###
+    
+    ### function for activating a text surface ###
 
 def text_objects(text, font):
     textSurface = font.render(text, True, black)
     return textSurface, textSurface.get_rect()
 
 
-    ### Erstellt eine Message mit Hilfe von Text-Objects ###
 
+    ### display text; set text font, size, color and position [text-objects] ###
+    
 def message_display(text):
     largeText = pygame.font.Font('freesansbold.ttf',25)
     TextSurf, TextRect = text_objects(text, largeText)
     TextRect.center = ((display_width/2),(display_height/2))
     gameDisplay.blit(TextSurf, TextRect)
     
-    pygame.display.update()
+    pygame.display.update()     # update display
     
-    time.sleep(2)
+    time.sleep(2)        # show text for () seconds
     
-    game_loop()
+    game_loop()      # (re)start game loop
 
+    
 
-
-    ### Die Game-Schleife ###
+    ### the major game loop ###
 
 def game_loop():
-    x = (display_width * 0.45)    ### Startposition des Spielers
-    y = (display_height * 0.8)
+    x = (display_width * 0.45)    # initial position of player
+    y = (display_height * 0.88)
+    playerdir = 0
 
-    x_change = 0    ### Change Variablen für Bewegung bei Tastendruck
+    x_change = 0    # change variables for key triggered movements
     y_change = 0
     
     gameExit = False
 
     while not gameExit:
-        xold = x    ### alte Spielerposition wird zwischengespeichert
+        xold = x    # old player position must be buffered
         yold = y
+        x_change = 0    # change variables for key triggered movements
+        y_change = 0
         
-        for event in pygame.event.get():    ### Tastaturabfrage
-            if event.type == pygame.QUIT:
-                gameExit = True
+        event = pygame.event.get()    # key query
+        #if event.type == pygame.QUIT:
+        #    gameExit = True
             
-            if event.type == pygame.KEYDOWN:     ### Bewegungstastendruck
-                if event.key == pygame.K_LEFT:
+        pressed = pygame.key.get_pressed()
+
+        if pressed[pygame.K_LEFT]:
+                    playerdir = 2
                     x_change = -2
-                elif event.key == pygame.K_RIGHT:
+        if pressed[pygame.K_RIGHT]:
+                    playerdir = 3
                     x_change = 2
-                elif event.key == pygame.K_UP:
+        if pressed[pygame.K_UP]:
+                    playerdir = 0
                     y_change = -2
-                elif event.key == pygame.K_DOWN:
+        if pressed[pygame.K_DOWN]:
+                    playerdir = 1
                     y_change = 2
-        
-            if event.type == pygame.KEYUP:     ### Beim Loslassen der Taste passiert nichts
-                if event.key == pygame.K_LEFT or event.key == pygame.K_RIGHT:
-                    x_change = 0
-                elif event.key == pygame.K_UP or event.key == pygame.K_DOWN:
-                    y_change = 0
-          
-        x += x_change     ### Spielerposition verändern
+        x += x_change     # adjust player position
         y += y_change
     
         
-        dodraw(x,y)    ### Hier wird das gesamte Spielfeld neu gezeichnet
-
+        dodraw(x,y, playerdir)
         
-        for row in range(MAPHEIGHT):    ### Kollisionsabfrage
-           
+        
+            ### Collision detection ###
+
+        for row in range(MAPHEIGHT):               
             for column in range(MAPWIDTH):
                 if (x >= (column * TILESIZE) and x <= (column* TILESIZE) + TILESIZE) or ((x+29) >= (column * TILESIZE) and (x+29) <= (column* TILESIZE) + TILESIZE):
                     if (y >= (row * TILESIZE) and y <= (row* TILESIZE) + TILESIZE) or ((y+35) >= (row * TILESIZE) and (y+35) <= (row* TILESIZE) + TILESIZE):
@@ -172,10 +173,9 @@ def game_loop():
         if (y >= display_height - player_height or y <= 0):
                             x = xold
                             y = yold
-
-            ### Ende der Kollisionsabfrage ###    
+            ### end of collision detection ###    
        
         
-game_loop()
-pygame.quit()    ### Pygame ordentlich schließen
-quit()
+game_loop()     ### Start the  game loop ###
+pygame.quit()   ### close pyGame tidily ###
+quit()          ### quit programm ###
