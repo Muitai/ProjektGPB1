@@ -1,4 +1,6 @@
+### Everything concerning the world map ###
 import pygame
+
 ### Names of the tile types just for the ease of reading ###
 floor = 0
 grass = 1
