@@ -19,6 +19,6 @@ Description:
   being realised with the pyGame-library.
   
 
-Release Note 30.11.2018:
+Release Note 02.12.2018:
 
   As of now we have implemented a simple monster spawn system and smooth player movements which simple dummy graphics for everything.
