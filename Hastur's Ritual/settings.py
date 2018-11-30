@@ -1,4 +1,4 @@
-### Player settings
+### general settings, especially player settings
 import pygame
 
     ### Player speed ###
