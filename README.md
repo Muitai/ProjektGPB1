@@ -21,4 +21,4 @@ Description:
 
 Release Note 02.12.2018:
 
-  As of now we have implemented a simple monster spawn system and smooth player movements which simple dummy graphics for everything.
+  As of now we have implemented a simple monster spawn system and smooth player movements with simple dummy graphics for everything.
