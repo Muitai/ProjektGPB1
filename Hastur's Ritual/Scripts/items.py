@@ -1,6 +1,6 @@
 
 
-#Base class for all items
+#Base class defined all items in game!
 class Item():
     def __init__(self, name, description, value, heal):
         self.name = name
@@ -9,9 +9,9 @@ class Item():
         self.heal = heal
     
     def __str__(self):
-        return"{}\n=====\n{}\nValue: {}\n".format(self.name, self.descrition, self.value)
+        return"{}\n=====\n{}\nValue: {}\n".format(self.name, self.descrition, self.value) #gives back an answer to game!
 
-
+# underclass weapon defined a class for all weapons in game!
 class Weapon(Item):
     def __init__(self, name, description, value, damage):
         self.damage = damage
@@ -21,6 +21,8 @@ class Weapon(Item):
         return"{}\n=====\n{}\nValue: {}\nDamage: {}\n".format(self.name, self.description, self.value, self.damage)
     
 
+
+# underclass armor defined a class for all armors in game!
 class Armor(Item):
     def __init__(self, name, description, value, protection):
         self.protection = protection
@@ -31,7 +33,7 @@ class Armor(Item):
 
 
 
-# Weapons
+# Weapons class for all weapons in game! 
 
 class TraineeSword(Weapon):
     def __init__(self):
@@ -56,7 +58,7 @@ class Sword(Weapon):
                                  damage = 15)
                           
 
-# Items
+# Items class for all items in game! 
 
 class Gold(Item, amt):
     def __init__(self):
@@ -93,10 +95,10 @@ class Greater_HP_Potion(Item, amt):
                          heal = 75)
                                
  
- # Armor
+ # Armor class for all amors in game! 
  
  
- class Lether_Armor(Armor):
+class Lether_Armor(Armor):
      def __init__(self):
          super().__init__(name="Lether Armor",
                           description = " A lether armor, better as nothing."
