@@ -1,0 +1,14 @@
+# Function Description
+## The dodraw Function as in game01.py
+
+The dodraw function draws all of the game display using the pyGame library.
+First it fills the window surface white then it draws the entire tile map and
+finally the player sprite.
+The other items and monsters are drawn as separate surface layers in other methods.
+
+The tile map is drawn by iterating through two for loops each for the rows respectivally
+the columns of the map:
+
+> for y in range(MAPHEIGHT):
+>     for x in range(MAPWIDTH):
+>         gameDisplay.blit(img[int(tilemap[y][x])], (TILESIZE*x,TILESIZE*y))
